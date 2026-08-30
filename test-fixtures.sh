@@ -49,3 +49,29 @@ expected_for() {
 [ "$(sort "$work/level10/my_psswd" | uniq -u | rot13 | grep rightcode | cut -d: -f2)" = "$(expected_for 10)" ]
 
 echo 'All ten deterministic fixtures and intended solution paths passed.'
+
+# Exercise the shared staging runtime as well as the generators themselves.
+# This catches accidental activation of the legacy direct-build adapter, which
+# expects a different temporary README filename.
+runtime_home=$work/runtime-home
+CASE_ROOT=$work/runtime-case
+HOME_ROOT=$runtime_home
+STATUS_ROOT=$work/runtime-status
+BUILD_LOG=$work/runtime-build.log
+MAX_PARALLEL=10
+LAB_TITLE='Text Manipulation'
+NO_LOGIN=1
+export CASE_ROOT HOME_ROOT STATUS_ROOT BUILD_LOG MAX_PARALLEL LAB_TITLE NO_LOGIN
+. ./polylinux-parallel-runtime.sh
+prepare_standard_accounts
+build_standard_levels
+[ -f "$STATUS_ROOT/all-ready" ]
+[ ! -f "$STATUS_ROOT/build-failed" ]
+for levelnumber in 1 2 3 4 5 6 7 8 9 10; do
+    readme="$runtime_home/level$levelnumber/README.txt"
+    [ -s "$readme" ]
+    ! grep -q 'This level is ready[.]' "$readme"
+    grep -q 'Submit the requested answer through the external form[.]' "$readme"
+done
+
+echo 'Shared parallel runtime preserved all ten generated README files.'

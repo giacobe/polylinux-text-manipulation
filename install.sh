@@ -49,8 +49,6 @@ export THEME_OFFSET THEME_STEP
 for cmd in adduser awk base64 cat chmod chown cp cut date find grep head id mkdir mv passwd printf rm sed sha256sum sleep sort su tail touch tr uniq wc; do command_required "$cmd"; done
 
 mkdir -p /home
-LEGACY_DIRECT=1
-export LEGACY_DIRECT
 
 cp "$INSTALL_ROOT/profile" /etc/profile
 for helper in nextlevel prevlevel; do
