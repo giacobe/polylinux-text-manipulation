@@ -43,3 +43,4 @@ if grep -R -n -E 'record_answer|ANSWER_DIR|/answers|checklevel' . \
     exit 1
 fi
 echo 'Contract, theme catalog, and shell syntax checks passed.'
+sh ./test-fixtures.sh
