@@ -13,7 +13,7 @@ See `PROVENANCE.md` for the recovery boundary and source hash.
 ## Repository contents
 
 - `installrobber.sh` installs the recovered lab in a compatible PolyLinux guest.
-- `robber1.sh` through `robber11.sh` generate the learner levels.
+- `level1.sh` through `level11.sh` generate the learner levels.
 - `codedwords.txt` and `wordswithhashes.txt` provide required data.
 - `participant-guide.md` preserves the public instructions.
 - `provenance/RECOVERY-MANIFEST.json` records the recovered `/root` inventory.
@@ -48,3 +48,9 @@ scripts/03-package-payload.sh \
 Replace `<timestamp>` with the directory created by stage 2. Review the
 generated manifest and boot-test the exact image pair in v86 before publishing.
 Do not commit the generated `.bzImage` or `.rootfs.cpio.gz` here.
+
+## Standard runtime contract
+
+The current release uses the reversible PolyBandit exercise code, the versioned `seed-v1` deterministic seed, ten concurrent level generators, staged `README.txt` readiness, unrestricted `nextlevel`/`prevlevel` navigation, and no client-side answer store or checker. See `lab.json` for the authoritative level count, theme policy, Buildroot configuration, and browser artifact names.
+
+Do not rebuild the assigned Buildroot baseline merely to package this lab. Package the repository payload into the configuration named by `buildroot_configuration`, preserve the baseline kernel, and publish the resulting `packaged.bzImage` and `packaged.rootfs.cpio.gz`.

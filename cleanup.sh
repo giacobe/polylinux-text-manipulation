@@ -1,14 +1,14 @@
-deluser robber1
-deluser robber2
-deluser robber3
-deluser robber4
-deluser robber5
-deluser robber6
-deluser robber7
-deluser robber8
-deluser robber9
-deluser robber10
-deluser robber11
+deluser level1
+deluser level2
+deluser level3
+deluser level4
+deluser level5
+deluser level6
+deluser level7
+deluser level8
+deluser level9
+deluser level10
+deluser level11
 
 rm -r /home/*
 
