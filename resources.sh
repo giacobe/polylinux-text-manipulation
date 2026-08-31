@@ -19,12 +19,7 @@ rot13() {
 write_readme() {
     instructions=$1
     {
-        echo "Exercise code: $EXERCISE_CODE"
-        echo "Participant: $USER_ID"
-        echo "Theme: $(theme_field title)"
-        echo "************************************************************************"
         printf '%s\n' "$instructions"
-        echo "************************************************************************"
         echo "Submit the requested answer through the external form."
     } > "$LEVEL_HOME/README.txt"
 }
